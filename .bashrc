@@ -115,3 +115,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# manage dotfiles with git repo
+# idealy create a bare git repo
+alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl/.git --work-tree=$HOME"
+#dotfiles config --local status.showUntrackedFiles no
