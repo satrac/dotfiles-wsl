@@ -75,7 +75,16 @@
                 "source": "Windows.Terminal.Wsl",
                 "commandline": "wsl.exe -d Kali-linux",
                 "startingDirectory": "//wsl$/kali-linux/home/john"
-             }
+             },
+             {
+                "guid": "{d3f31bee-5823-5ed8-8e04-f31ed54f2cd9}",
+                "hidden": false,
+                "name": "fedoraremix",
+                "colorScheme": "One Half Dark",
+                "source": "Windows.Terminal.Wsl",
+                "commandline": "wsl.exe ~ -d fedoraremix"
+                //"startingDirectory": "//wsl$/fedoraremix/home/john"
+            }             
         ]
     },
 

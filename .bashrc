@@ -120,6 +120,6 @@ fi
 # idealy create a bare git repo
 #https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
 #echo ".dotfiles.git" >> .gitignore
-alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl/.git --work-tree=$HOME"
+#alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl/.git --work-tree=$HOME"
 #alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl.git/ --work-tree=$HOME"
 #dotfiles config --local status.showUntrackedFiles no
