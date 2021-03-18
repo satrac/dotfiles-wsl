@@ -1,0 +1,265 @@
+set nocompatible          " don't be compatible with vi
+
+" -----------------------------------------------------------------------------
+" Plugins
+" -----------------------------------------------------------------------------
+
+" assumes you have vim-plug installed
+
+call plug#begin('~/.vim/plugged')
+
+" Atom One Dark theme.
+Plug 'joshdick/onedark.vim'
+
+" Gruvbox theme.
+Plug 'gruvbox-community/gruvbox'
+
+" modeline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Navigate and manipulate files in a tree view.
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" fuzzy searching
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Automatically executes filetype plugin indent on and syntax enable"
+call plug#end()
+
+" vim-plug automatically executes
+syntax enable
+filetype plugin indent on
+
+" -----------------------------------------------------------------------------
+" Color settings
+" -----------------------------------------------------------------------------
+" Enable 24-bit true colors if your terminal supports it.
+if (has("termguicolors"))
+" https://github.com/vim/vim/issues/993#issuecomment-255651605
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" for 256 colors
+    set t_Co=256
+    let g:rehash256=1
+    set termguicolors
+endif
+
+" Enable syntax highlighting.
+syntax enable
+
+" Set the color scheme to dark.
+set background=dark
+
+" Set the color scheme.
+"colorscheme onedark
+
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
+"let g:solorized_termcolors=256
+"colorscheme solarized
+
+" ----------------------------------------------------------------------------
+" Basic Settings
+" ----------------------------------------------------------------------------
+
+
+" shorten updatetime for faster experience
+set updatetime=50
+
+set exrc
+
+" don't bell or blink
+set noerrorbells visualbell t_vb=
+
+" line numbers
+set relativenumber              " Display relative line numbers
+set number                      " Display line numbers
+set numberwidth=1               " using only 1 column while possible
+
+set nowrap                      " do not wrap long lines
+
+" tabs or spaces?
+set tabstop=4                   " <tab> inserts 4
+set softtabstop=4               " <BS> over an autoindent deletes both spaces
+set shiftwidth=4                " indent level is 4
+set expandtab                   " use spaces, not tables for autoindent/tab key
+set autoindent
+set smartindent
+
+" display whitespace
+" displays tabs, line-ends and displays when a line runs off-screen
+set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:>
+" to enable use :set list
+"set list
+
+" hate folding
+set foldmethod=manual
+set nofoldenable                " disable folding
+set foldlevel=99
+set foldlevelstart=99
+
+" searching
+set incsearch
+set showmatch
+set nohlsearch                  " don't leave highlighted search
+set ignorecase
+set smartcase
+set gdefault                    " when substituting :s/// g is always on
+
+set backspace=indent,eol,start  " allow backspacing over autoindent,EOL,BOL
+
+" sets the cwd to whatever file is in view, allows for better omni completion
+"set autochdir
+set completeopt=menuone,noinsert,noselect
+
+"wildmenu
+set wildmenu                    " Menu completion in command mode on <Tab>
+set wildmode=full               " <Tab> cycles between all matching choices
+
+"set wildchar=<Tab> wildmenu wildmode=full
+"set wildcharm=<C-z>
+"nnoremap <F5> :b <C-z>
+
+" ignore python crud
+set wildignore+=**/virtualenv_run/**,*.pyc,*.pyo,__pychache__
+
+" provides tab-completion for all file-related tasks
+" this appends to the default path
+" set path+=**
+set path=.,**                   " search local and sub-dirs
+
+set ruler
+
+" moving around
+set scrolloff=8                 " start scrolling when 8 lines away from bottom
+set nostartofline
+
+" Messages, info, status
+set guicursor=                  " configure cursor to be a block
+set title                       " show title in console title bar
+set cursorline                  " have line indicating the cursor position
+set colorcolumn=80              " show column line
+"set signcolumn=yes
+set ruler                       " show the cursor position
+set showcmd
+set noshowmode                  " vim-airline already displays mode
+set laststatus=2                " always show statusline even if only 1 window
+"set cmdheight=2
+"set modelines=2
+set modeline                    " allow vim options to be embedded in files
+set shortmess+=c
+set textwidth=0
+
+
+"set mouse=a                    " allow mouse clicks to change cursor position
+set mouse=nicr                  " allow mouse scrolling
+
+" set hidden hides buffers instead of closing them
+set hidden
+
+" backups
+set nobackup                    " turn off backups
+set noswapfile                  " turn off swap files
+" set directory=/var/tmp        " set swap files to be in /var/tmp
+
+" undo
+set undodir=~/.vim/undodir
+set undofile
+
+set paste
+
+set noautowrite                 " don't write unless i request it
+set noautowriteall              " never
+set autoread                    " autommatically reread changed files
+set ffs=unix,dos,mac            " try recognizing dos, unix & mac line endings
+" allways diff vertically
+set diffopt+=vertical
+
+
+" set leader key to spacebar
+let mapleader=" "
+let maplocalleader=" "
+
+" -----------------------------------------------------------------------------
+" splits and tabs
+" -----------------------------------------------------------------------------
+"set noequalalways              " all windows not same size after split or close
+set splitbelow                  " split new horizontal window below
+set splitright                  " split new textplorer vertically
+
+":sp for horizontal split
+":vsp for vertical split
+
+" remap window management keys to CTRL + hjkl
+map <c-h> <c-w>h
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+
+" cycle through splits with shit <Tab>
+noremap <S-Tab> <c-w>w
+
+" adjust split sizes more friendly (resizes +/- 3)
+nnoremap <silent> <leader>h :vertical resize -3<CR>
+nnoremap <silent> <leader>l :vertical resize +3<CR>
+nnoremap <silent> <leader>j :resize +3<CR>
+nnoremap <silent> <leader>k :resize -3<CR>
+
+" <c-w>o focuses on just one window
+" <c-w>| expands split horizontally
+" <c-w>_ expands split verically
+" <c-w>= equalizes splits
+map <leader>= <c-w>=
+map <leader><bar> <c-w>|
+map <leader>_ <c-w>_
+
+" removes pipes | that act as seperators on splits
+" since i have linenumbers on it acts like a seperator
+"set fillchars="vert:,fold:-,eob:~"
+" to change character from pipes to something else
+"set fillchars+=vert:\ 
+
+" rotate splits from vertical to horizontal or horizontal to vertical
+"map <leader>th <c-w>t<c-w>H
+"map <leader>tk <c-w>t<c-w>K
+
+" switch between tabes with ALT-1, ALT-2, ALT-3,....ALT-0
+map 1 :tabnext 1
+map 2 :tabnext 2
+map 3 :tabnext 3
+map 4 :tabnext 4
+map 5 :tabnext 5
+map 6 :tabnext 6
+map 7 :tabnext 7
+map 8 :tabnext 8
+map 9 :tabnext 9
+map 0 :tabnext 10
+"NOTE: ^[ is Ctrl-v ESC and ^M is Ctrl-v Ctrl-m
+
+
+
+" ........
+" vim-airline plugin
+" ........
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline_theme='onedark'
+"let g:airline_theme='luna'
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" ............................................................................
+" scrooloose/nerdtree
+" ............................................................................
+
+let g:NERDTreeShowHidden=1
+let g:NERDTreeAutoDeleteBuffer=1
+let g:NERDTreeQuitOnOpen=0
+
+" Open nerd tree at the current file or close nerd tree if pressed again.
+nnoremap <silent> <expr> <Leader>n g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+
