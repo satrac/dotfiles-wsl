@@ -1,0 +1,19 @@
+[pull]
+    rebase = false
+[color]
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+[color "diff"]
+    whitespace = red reverse
+[rebase]
+    autosquash = true
+[push]
+    default = current
+[core]
+    fileMode = true
+    editor = vim
+[include]
+    path = ~/.gitconfig.user
