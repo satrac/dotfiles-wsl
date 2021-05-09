@@ -1,0 +1,24 @@
+# vim: syntax=tmux
+
+# default statusbar colors
+set -g status-style fg=colour136,bg=colour234
+
+# default window title colors
+set-window-option -g window-status-style fg=colour244
+
+# active window title colors
+set-window-option -g window-status-current-style fg=colour166
+
+# pane border
+set -g pane-border-style fg=colour136
+set -g pane-active-border-style fg=colour136
+
+# message text
+set -g message-style bg=colour234,fg=colour166
+
+# pane number display
+set-option -g display-panes-active-colour colour33 #blue
+set-option -g display-panes-colour colour166 #orange
+
+#clock
+#set-window-option -g clock-mode-colour colour64 #green

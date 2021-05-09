@@ -31,6 +31,23 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# TODO find out if xserver is running then run this
+#if [ -f "$HOME/.Xmodmap" ] ; then
+#    if [ -x /usr/bin/xmodmap ]; then
+#        xmodmap $HOME/.Xmodmap
+#    fi
+#fi
+
+#if [ -d "$HOME/.emacs.d/bin" ] ; then
+#    PATH="$HOME/.emacs.d/bin:$PATH"
+#fi
+
+# for doom-emacs
+if [ -d "$HOME/doom-emacs/bin" ] ; then
+    PATH="$HOME/doom-emacs/bin:$PATH"
+fi
+
+
 export EDITOR=vim
 
 # Add colors to the less and man commands.

@@ -96,9 +96,10 @@ set background=dark
 "colorscheme wombat
 "colorscheme wombat256
 
+" disable italics
+let g:dracula_italic = 0
 colorscheme dracula
-
-"colorscheme twilight256
+"colorscheme wilight256
 
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
@@ -218,7 +219,7 @@ set wildignore+=**/virtualenv_run/**,*.pyc,*.pyo,__pychache__
 
 " provides tab-completion for all file-related tasks
 " this appends to the default path
-" set path+=**
+"set path+=**
 set path=.,**                   " search local and sub-dirs
 
 set ruler
@@ -266,7 +267,8 @@ set noautowrite                 " don't write unless i request it
 set noautowriteall              " never
 set autoread                    " autommatically reread changed files
 set ffs=unix,dos,mac            " try recognizing dos, unix & mac line endings
-" allways diff vertically
+" allways diff v
+" disable italicsertically
 set diffopt+=vertical
 
 set spelllang=en_us
@@ -274,7 +276,6 @@ set spelllang=en_us
 if executable('rg')
     let g:rg_derive_root='true'
 endif
-
 
 
 " set leader key to spacebar
@@ -337,6 +338,10 @@ map 9 :tabnext 9
 map 0 :tabnext 10
 "NOTE: ^[ is Ctrl-v ESC and ^M is Ctrl-v Ctrl-m
 
+" Select all
+nmap <C-a> gg<S-v>G
+
+
 " -----------------------------------------------------------------------------
 " Basic autocommands
 " -----------------------------------------------------------------------------
@@ -356,6 +361,7 @@ autocmd FileType make setlocal noexpandtab
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme='dracula'
 "let g:airline_theme='onedark'
 "let g:airline_theme='luna'
 
@@ -382,7 +388,8 @@ let g:fzf_action = {
   \ 'ctrl-y': {lines -> setreg('*', join(lines, "\n"))}}
 
 " Launch fzf with CTRL+P.
-nnoremap <silent> <C-p> :FZF -m<CR>
+"nnoremap <silent> <C-p> :FZF -m<CR>
+nnoremap <silent> <Leader>p :FZF -m<CR>
 
 " Map a few common things to do with FZF.
 nnoremap <silent> <Leader><Enter> :Buffers<CR>
@@ -510,5 +517,3 @@ function! ToggleNetrw()
     silent Lexplore
   endif
 endfunction
-
-
