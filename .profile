@@ -30,6 +30,7 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+export PATH
 
 # TODO find out if xserver is running then run this
 #if [ -f "$HOME/.Xmodmap" ] ; then
@@ -37,16 +38,6 @@ fi
 #        xmodmap $HOME/.Xmodmap
 #    fi
 #fi
-
-#if [ -d "$HOME/.emacs.d/bin" ] ; then
-#    PATH="$HOME/.emacs.d/bin:$PATH"
-#fi
-
-# for doom-emacs
-if [ -d "$HOME/doom-emacs/bin" ] ; then
-    PATH="$HOME/doom-emacs/bin:$PATH"
-fi
-
 
 export EDITOR=vim
 
@@ -59,3 +50,11 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"; a="${a%_}"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"; a="${a%_}"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"; a="${a%_}"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"; a="${a%_}"
+
+# GWSL2
+
+export LIBGL_ALWAYS_INDIRECT=1 #GWSL
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0 #GWSL
+export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}') #GWSL
+export GTK_THEME=Adwaita-dark
+

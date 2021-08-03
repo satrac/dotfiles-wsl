@@ -1,0 +1,26 @@
+{
+ "conf_ver": 4,
+ "general": {
+  "clipboard": true,
+  "start_menu_mode": false,
+  "shell_gui": "wt",
+  "acrylic_enabled": true
+ },
+ "graphics": {
+  "window_mode": "multi",
+  "hidpi": true
+ },
+ "putty": {
+  "ip": null,
+  "ssh_key": null
+ },
+ "distro_blacklist": [
+  "docker"
+ ],
+ "app_blacklist": [
+  "exampleblock"
+ ],
+ "xserver_profiles": {
+  "Plain VcXsrv": []
+ }
+}
