@@ -278,6 +278,9 @@ if executable('rg')
 endif
 
 
+set comments=n:#                " python/perl/bash comments
+map # !!perl -pe'm{^\# ?}?s{^\#}{}:m{\S}?s{^}{\#}:1'<CR><LF>
+
 " set leader key to spacebar
 let mapleader=" "
 let maplocalleader=" "
