@@ -123,3 +123,4 @@ fi
 #alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl/.git --work-tree=$HOME"
 #alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl.git/ --work-tree=$HOME"
 #dotfiles config --local status.showUntrackedFiles no
+export LIBGL_ALWAYS_INDIRECT=1 #GWSL
