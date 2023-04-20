@@ -119,8 +119,13 @@ fi
 # manage dotfiles with git repo
 # idealy create a bare git repo
 #https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
-#echo ".dotfiles.git" >> .gitignore
-#alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl/.git --work-tree=$HOME"
-#alias dotfiles="/usr/bin/git --git-dir=$HOME/src/dotfiles-wsl.git/ --work-tree=$HOME"
+#git clone --bare git@github.com:satrac/dotfiles-wsl.git .dotfiles-wsl
+#alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles-wsl --work-tree=$HOME"
+#echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles-wsl --work-tree=$HOME"' >> $HOME/.bashrc
+#source ~/.bashrc
+#echo ".dotfiles-wsl" >> .gitignore
+#dotfiles checkout --force
 #dotfiles config --local status.showUntrackedFiles no
+
+alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles-wsl --work-tree=$HOME"
 export LIBGL_ALWAYS_INDIRECT=1 #GWSL
